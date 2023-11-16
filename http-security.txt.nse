@@ -12,7 +12,7 @@ license = "Same as Nmap--See https://nmap.org/book/man-legal.html"
 portrule = shortport.http
 
 action = function(host, port)
-  local answer = http.get(host, port, "/.well-known/security.txt" )
+  local answer = http.get(host, port, "/.well-known/security.txt",{redirect_ok=false} )
   if answer.status == 200 then
     if answer.body == "" then
       return "EMPTY"
